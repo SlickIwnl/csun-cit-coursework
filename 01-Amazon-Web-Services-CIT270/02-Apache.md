@@ -1,23 +1,23 @@
-# 02 — Apache Web Server
+# 02: Apache Web Server
 
-**Course:** CIT 270 — Amazon Web Services  
-**My documentation:** In progress
+**Course:** CIT 270, Amazon Web Services  
+**My screenshots and results:** Coming soon
 
-## Goal
+## What I was setting up
 
-Install Apache and PHP on the EC2 instance from [01 — DNS and EC2](01-DNS.md), then confirm that a page loads through the domain.
+After getting my domain and EC2 instance working, I set up Apache and PHP so the instance could serve a website.
 
-## Steps
+## Steps I followed
 
-1. Connect to your Amazon Linux 2023 instance with the lab's SSH key.
-2. Update packages and install Apache plus the PHP packages used in the class LAMP exercise:
+1. I SSH'd into the Amazon Linux instance from the [DNS setup](01-DNS.md).
+2. I updated the instance and installed Apache with the PHP packages for the class lab:
 
 ```bash
 sudo dnf upgrade -y
 sudo dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel
 ```
 
-3. Check whether Apache is running. If it is inactive, start it. Enable it to start when the instance boots:
+3. I used `systemctl` to check Apache. It was installed, but I needed to start it. I also enabled it so it could start when the instance booted:
 
 ```bash
 sudo systemctl status httpd
@@ -26,15 +26,15 @@ sudo systemctl enable httpd
 sudo systemctl status httpd
 ```
 
-4. Visit `http://your-domain.example` and confirm that the server responds. Check the A record and HTTP security group rule if it does not.
-5. Inspect the Apache document root, `/var/www/html`, and its permissions. The reference lab changed the owner of the `html` directory to `ec2-user` so the student could create files there:
+4. I opened my domain over HTTP to see whether the server responded. If it hadn't loaded, I would have checked that Apache was running and that the security group allowed port 80.
+5. I looked at `/var/www/html`, the folder Apache serves files from. For this lab, I changed ownership of the `html` directory so `ec2-user` could add a page:
 
 ```bash
 ls -ld /var/www/html
 sudo chown ec2-user /var/www/html
 ```
 
-6. Create a temporary `index.php` inside `/var/www/html` containing the PHP test used in class:
+6. I created an `index.php` file in that folder to test PHP:
 
 ```php
 <?php
@@ -42,16 +42,16 @@ phpinfo();
 ?>
 ```
 
-7. Reload your domain and confirm the PHP information page appears. Once you have recorded the result, remove or replace this test page because it exposes server configuration details.
+7. I reloaded the site and checked for the PHP information page. After documenting the result, I would remove or replace that test page because it shows details about the server.
 
-## My work
+## My documentation
 
-- **Commands I ran:** [Add any changes from the example]
-- **What the page showed:** [Add your own screenshot or description]
-- **Problems and fixes:** [Add troubleshooting notes]
-- **What I learned:** [Explain Apache, the document root, and PHP]
+- **Commands or settings I changed:** [Add yours]
+- **Screenshot of the site:** [Add your own]
+- **What worked or gave me trouble:** [Add your notes]
+- **What I learned about Apache and PHP:** [Add your explanation]
 
 ## References
 
-- [Classmate's CIT 270 Apache workflow](https://github.com/Csimmons117/csun_cit/blob/main/03-AmazonWebServices270/02-Apache.md)
+- [CIT 270 Apache workflow I used for the lab sequence](https://github.com/Csimmons117/csun_cit/blob/main/03-AmazonWebServices270/02-Apache.md)
 - [AWS: Install a LAMP server on Amazon Linux 2023](https://docs.aws.amazon.com/linux/al2023/ug/ec2-lamp-amazon-linux-2023.html)
