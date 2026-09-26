@@ -1,16 +1,16 @@
-# 03 — SSL Certificate and HTTPS
+# 03: SSL Certificate and HTTPS
 
-**Course:** CIT 270 — Amazon Web Services  
-**My documentation:** In progress
+**Course:** CIT 270, Amazon Web Services  
+**My screenshots and results:** Coming soon
 
-## Goal
+## What I was setting up
 
-Configure the Apache site for the class domain and obtain a certificate so the site loads over HTTPS.
+The website worked over HTTP, so the next step was to configure Apache for my domain and add a certificate for HTTPS.
 
-## Steps
+## Steps I followed
 
-1. Start the AWS lab and check that the domain's **A record** points to the instance's current public IPv4 address. Load the page over HTTP first.
-2. Check Apache. Start it if needed, and enable it for future boots:
+1. I started the AWS lab, checked that my domain's A record still pointed to my Elastic IP, and made sure the site loaded over HTTP.
+2. I checked that Apache was running and enabled it to start when the instance booted:
 
 ```bash
 sudo systemctl status httpd
@@ -18,14 +18,14 @@ sudo systemctl start httpd
 sudo systemctl enable httpd
 ```
 
-3. Download the course-provided `webserver.conf` from your regular class Canvas page, if your instructor supplied it. Edit its `ServerName` to use your own domain. Do not reuse another student's domain or config file.
-4. From your computer, copy the edited file to your instance with the private key you used for SSH:
+3. I got the `webserver.conf` file provided for the class, opened it on my computer, and changed `ServerName` to my own domain.
+4. I copied the edited file to the instance with `scp` and my SSH key:
 
 ```bash
 scp -i /path/to/labsuser.pem webserver.conf ec2-user@your-domain.example:~
 ```
 
-5. On the instance, put the file in Apache's configuration directory. Check the configuration before restarting Apache:
+5. On the instance, I copied the file into Apache's `conf.d` directory. I checked the configuration before restarting the service:
 
 ```bash
 sudo cp ~/webserver.conf /etc/httpd/conf.d/webserver.conf
@@ -33,25 +33,24 @@ sudo apachectl configtest
 sudo systemctl restart httpd
 ```
 
-6. Install Certbot and its Apache plugin. Package names can depend on the Amazon Linux image; the reference lab installed `certbot` and the Apache plugin through `dnf`:
+6. I installed Certbot and its Apache plugin, then ran Certbot for the site:
 
 ```bash
 sudo dnf install -y certbot python3-certbot-apache
 sudo certbot --apache
 ```
 
-7. Follow Certbot's prompts for **your domain**. If Apache's configuration test fails, read and fix the reported error before trying again.
-8. Open `https://your-domain.example`. Confirm that the browser reports a valid certificate for your domain. Record how certificate renewal is configured and test it if your lab permits.
+7. I followed the prompts for my domain and checked the site at `https://your-domain.example` to see whether the certificate was working. If the Apache config test or Certbot returned an error, I would check that error before rerunning anything.
 
-## My work
+## My documentation
 
-- **Domain and configuration choices:** [Add yours]
-- **Certificate result:** [Add the issuer, expiration date, and your own screenshot]
-- **Issues and fixes:** [Add any configuration or validation errors you encountered]
-- **What I learned:** [Explain how DNS, Apache, and the certificate work together]
+- **Config changes I made:** [Add yours]
+- **Screenshot of the HTTPS result:** [Add your own]
+- **Certificate details and renewal:** [Add what you observed]
+- **Problems I ran into and what I learned:** [Add your notes]
 
 ## References
 
-- [Classmate's CIT 270 SSL certificate workflow](https://github.com/Csimmons117/csun_cit/blob/main/03-AmazonWebServices270/03-SSL-cert.md)
-- [AWS: Configure SSL/TLS on Amazon Linux 2023](https://docs.aws.amazon.com/linux/al2023/ug/SSL-on-amazon-linux-2023.html)
+- [CIT 270 SSL workflow I used for the lab sequence](https://github.com/Csimmons117/csun_cit/blob/main/03-AmazonWebServices270/03-SSL-cert.md)
+- [AWS: SSL/TLS on Amazon Linux 2023](https://docs.aws.amazon.com/linux/al2023/ug/SSL-on-amazon-linux-2023.html)
 - [Certbot: Apache instructions](https://certbot.eff.org/instructions?os=pip&ws=apache)
