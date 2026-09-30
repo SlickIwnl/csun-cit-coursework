@@ -17,14 +17,16 @@ sudo dnf upgrade -y
 sudo dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel
 ```
 
-3. I used `systemctl` to check Apache. It was installed, but I needed to start it. I also enabled it so it could start when the instance booted:
+3. I used `systemctl` to check Apache. It was installed, but I needed to start it. I also enabled it so it could start when the instance booted. This is the command sequence I can compare with my own terminal output:
 
-```bash
-sudo systemctl status httpd
-sudo systemctl start httpd
-sudo systemctl enable httpd
-sudo systemctl status httpd
+```console
+[ec2-user@your-instance ~]$ sudo systemctl status httpd
+[ec2-user@your-instance ~]$ sudo systemctl start httpd
+[ec2-user@your-instance ~]$ sudo systemctl enable httpd
+[ec2-user@your-instance ~]$ sudo systemctl status httpd
 ```
+
+> The second status check should show Apache as active and running. I'll add my actual status output or screenshot after I review my lab notes.
 
 4. I opened my domain over HTTP to see whether the server responded. If it hadn't loaded, I would have checked that Apache was running and that the security group allowed port 80.
 5. I looked at `/var/www/html`, the folder Apache serves files from. For this lab, I changed ownership of the `html` directory so `ec2-user` could add a page:
