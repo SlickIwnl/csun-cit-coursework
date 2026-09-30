@@ -21,11 +21,15 @@ PS C:\Users\<your-name>> cd .\Downloads\
 PS C:\Users\<your-name>\Downloads> ls
 # Check the listing for labsuser.pem before continuing.
 PS C:\Users\<your-name>\Downloads> ssh -i .\labsuser.pem ec2-user@your-domain.example
+
+# Example of a successful connection:
+Amazon Linux 2023
+[ec2-user@your-instance ~]$
 ```
 
 > The `-i .\labsuser.pem` part looks for the key in the **current directory**. If I ran this command from another folder, SSH would not find that file and would give me an identity-file error. I could also use the PEM file's full path with `-i` instead of changing directories. I would replace the sample username, domain, and key name with my own values.
 
-7. I checked that I could reach the Amazon Linux terminal. If the domain didn't work right away, I checked the name servers and A record, then gave DNS some time to update. I'll add my actual terminal output and screenshot when I document my session.
+7. I checked for the `ec2-user` prompt shown in the example, which means the SSH connection reached the instance. If the domain didn't work right away, I checked the name servers and A record, then gave DNS some time to update. I'll add my actual terminal output and screenshot when I document my session.
 
 ## My documentation
 
