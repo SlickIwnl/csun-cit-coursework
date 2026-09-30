@@ -9,7 +9,7 @@ I wanted my class domain to point to an EC2 instance so I could use the domain t
 
 ## Steps I followed
 
-1. I got a domain for the class project, then opened my AWS Academy Learner Lab and started the AWS lab.
+1. I shopped around for a domain before buying one for the class project. I ended up using **Namecheap**, but any domain registrar would work for these steps. After that, I opened my AWS Academy Learner Lab and started the AWS lab.
 2. In Route 53, I created a **public hosted zone** with my domain name. Route 53 gave me four name servers, so I went back to my domain registrar and changed the domain's name servers to those four values.
 3. I launched an Amazon Linux EC2 instance with the key pair provided for the class. I allowed HTTP and HTTPS traffic for the website and set up SSH access from my IP.
 4. I assigned an **Elastic IP** to my EC2 instance. Normally, the automatically assigned public IPv4 address can change when you stop and start an instance. Without an Elastic IP, I'd have to find the new public IP and update the A record in Route 53 every time the instance got a new address. Until I did that, my domain would still point to the old IP, including when I tried to SSH using the domain. The Elastic IP gave me one stable address to use, which saved me that headache. Simply logging in over SSH does not change the IP.
