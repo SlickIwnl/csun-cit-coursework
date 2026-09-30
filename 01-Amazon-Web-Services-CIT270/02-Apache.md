@@ -12,10 +12,12 @@ After getting my domain and EC2 instance working, I set up Apache and PHP so the
 1. I SSH'd into the Amazon Linux instance from the [DNS setup](01-DNS.md).
 2. I updated the instance and installed Apache with the PHP packages for the class lab:
 
-```bash
-sudo dnf upgrade -y
-sudo dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel
+```console
+[ec2-user@your-instance ~]$ sudo dnf upgrade -y
+[ec2-user@your-instance ~]$ sudo dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel
 ```
+
+> I would check that both commands finish without a package error before moving on.
 
 3. I used `systemctl` to check Apache. It was installed, but I needed to start it. I also enabled it so it could start when the instance booted. This is the command sequence I can compare with my own terminal output:
 
@@ -31,10 +33,13 @@ sudo dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel
 4. I opened my domain over HTTP to see whether the server responded. If it hadn't loaded, I would have checked that Apache was running and that the security group allowed port 80.
 5. I looked at `/var/www/html`, the folder Apache serves files from. For this lab, I changed ownership of the `html` directory so `ec2-user` could add a page:
 
-```bash
-ls -ld /var/www/html
-sudo chown ec2-user /var/www/html
+```console
+[ec2-user@your-instance ~]$ ls -ld /var/www/html
+[ec2-user@your-instance ~]$ sudo chown ec2-user /var/www/html
+[ec2-user@your-instance ~]$ ls -ld /var/www/html
 ```
+
+> The second listing lets me confirm the directory owner changed to `ec2-user`.
 
 6. I created an `index.php` file in that folder to test PHP:
 
