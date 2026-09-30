@@ -19,3 +19,7 @@ These are my CIT 270 lab notes so far. The first five chapters cover the work we
 - [EFS](08-EFS.md)
 
 The later pages are placeholders until we cover and document them.
+
+## How I'll document terminal steps
+
+When a lab uses PowerShell or the EC2 terminal, I'll show the command with a sample prompt, what a successful result should look like, and a short explanation of what the result means. I'll label example output and replace it with my own output or screenshots as I document each lab. For console-only steps, I'll show the relevant settings instead of making up terminal commands.
