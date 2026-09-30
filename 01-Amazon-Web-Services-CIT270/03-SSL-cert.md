@@ -19,11 +19,16 @@ sudo systemctl enable httpd
 ```
 
 3. I got the `webserver.conf` file provided for the class, opened it on my computer, and changed `ServerName` to my own domain.
-4. I copied the edited file to the instance with `scp` and my SSH key:
+4. I copied the edited file to the instance with `scp` and my SSH key. Here is the PowerShell command layout, assuming `webserver.conf` and `labsuser.pem` are in Downloads:
 
-```bash
-scp -i /path/to/labsuser.pem webserver.conf ec2-user@your-domain.example:~
+```powershell
+PS C:\Users\<your-name>> cd .\Downloads\
+PS C:\Users\<your-name>\Downloads> ls
+# Confirm webserver.conf and labsuser.pem are both here.
+PS C:\Users\<your-name>\Downloads> scp -i .\labsuser.pem .\webserver.conf ec2-user@your-domain.example:~
 ```
+
+> Just like SSH, these relative file paths work only when PowerShell is in the folder containing the files. I would use full paths if they were saved elsewhere.
 
 5. On the instance, I copied the file into Apache's `conf.d` directory. I checked the configuration before restarting the service:
 
