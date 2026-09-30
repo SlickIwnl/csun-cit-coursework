@@ -18,9 +18,11 @@ This lab connected a MariaDB database in Amazon RDS to my Linux EC2 instance. I 
 
 1. I SSH'd into my Linux instance and installed the MariaDB client:
 
-```bash
-sudo dnf install -y mariadb105
+```console
+[ec2-user@your-instance ~]$ sudo dnf install -y mariadb105
 ```
+
+> I checked that the client installed without a package error before testing the RDS connection.
 
 2. I used the endpoint from the RDS page to connect. The `-p` option asks for the password without putting it in the command. This example shows where the prompt should appear, without including my password or claiming it is my saved output:
 
@@ -37,11 +39,13 @@ MariaDB [(none)]> exit
 1. I checked the [official phpMyAdmin downloads page](https://www.phpmyadmin.net/downloads/) for the package used in class. The older class example used version 5.2.1, so I would choose the version actually assigned or currently available rather than hard-code that old download.
 2. On the EC2 instance, I installed the PHP extensions needed by the AWS LAMP guide and restarted the services:
 
-```bash
-sudo dnf install -y php-mbstring php-xml
-sudo systemctl restart httpd
-sudo systemctl restart php-fpm
+```console
+[ec2-user@your-instance ~]$ sudo dnf install -y php-mbstring php-xml
+[ec2-user@your-instance ~]$ sudo systemctl restart httpd
+[ec2-user@your-instance ~]$ sudo systemctl restart php-fpm
 ```
+
+> I would confirm the services restarted successfully before opening phpMyAdmin in the browser.
 
 3. I downloaded and extracted phpMyAdmin into its **own folder** under `/var/www/html`. Keeping it in one folder made it easier to find and avoided moving unrelated files from my home directory into the website.
 4. I opened the phpMyAdmin page over HTTPS and checked that it loaded. The next check was signing in with the RDS database details. I'll document the exact configuration and any login issue I hit here once I add my own notes.
