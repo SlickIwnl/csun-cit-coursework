@@ -1,16 +1,21 @@
-# CIT 270 — Amazon Web Services
+# CIT 270: Amazon Web Services
 
 **Semester:** To add
 
-This folder is for my CIT 270 coursework at CSUN. Each page follows a topic from the course and has space for my own steps, screenshots, and notes. Documentation is in progress.
+These are my CIT 270 lab notes so far. The first five chapters cover the work we've reached in class. I'm adding my own screenshots, results, and troubleshooting notes as I organize them.
 
 ## Table of Contents
 
-1. [DNS](01-DNS.md)
-2. [Apache](02-Apache.md)
-3. [SSL Certificate](03-SSL-cert.md)
-4. [phpMyAdmin](04-PHPMyAdmin.md)
-5. [S3 Bucket](05-S3Bucket.md)
-6. [VPC](06-VPC.md)
-7. [VPC Peering Connection](07-PeerConnection.md)
-8. [EFS](08-EFS.md)
+1. [DNS and EC2](01-DNS.md)
+2. [Apache web server](02-Apache.md)
+3. [SSL certificate and HTTPS](03-SSL-cert.md)
+4. [RDS and phpMyAdmin](04-PHPMyAdmin.md)
+5. [S3 buckets](05-S3Bucket.md)
+
+## Later chapters
+
+- [VPC](06-VPC.md)
+- [VPC peering connection](07-PeerConnection.md)
+- [EFS](08-EFS.md)
+
+The later pages are placeholders until we cover and document them.
