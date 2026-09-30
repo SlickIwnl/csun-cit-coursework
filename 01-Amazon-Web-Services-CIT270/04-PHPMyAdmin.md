@@ -22,10 +22,12 @@ This lab connected a MariaDB database in Amazon RDS to my Linux EC2 instance. I 
 sudo dnf install -y mariadb105
 ```
 
-2. I used the endpoint from the RDS page to connect. The `-p` option asks for the password without putting it in the command:
+2. I used the endpoint from the RDS page to connect. The `-p` option asks for the password without putting it in the command. This example shows where the prompt should appear, without including my password or claiming it is my saved output:
 
-```bash
-mysql -h <your-rds-endpoint> -u <your-db-username> -p
+```console
+[ec2-user@your-instance ~]$ mysql -h <your-rds-endpoint> -u <your-db-username> -p
+Enter password:
+MariaDB [(none)]> exit
 ```
 
 3. I checked for the MariaDB prompt, then used `exit` when I was done. If it didn't connect, the first things to check were the endpoint, the RDS security group, and whether the database was running.
