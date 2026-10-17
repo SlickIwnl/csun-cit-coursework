@@ -12,13 +12,18 @@ These are my CIT 270 lab notes so far. The first five chapters cover the work we
 4. [RDS and phpMyAdmin](04-PHPMyAdmin.md)
 5. [S3 buckets](05-S3Bucket.md)
 
+## Assignments
+
+- [Assignment 01 — Drupal on AWS](Assignments/01-Drupal/README.md) — completed deployment using EC2, Apache, RDS, Route 53, and HTTPS.
+- **Assignment 02 — Elastic Beanstalk:** upcoming; documentation will be added when the assignment begins.
+
 ## Later chapters
 
 - [VPC](06-VPC.md)
 - [VPC peering connection](07-PeerConnection.md)
 - [EFS](08-EFS.md)
 
-The later pages are placeholders until we cover and document them.
+VPC and VPC peering were completed in class, and their documentation and screenshots are being expanded. EFS documentation is pending.
 
 ## How I'll document terminal steps
 
